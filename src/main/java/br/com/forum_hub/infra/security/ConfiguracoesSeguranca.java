@@ -28,7 +28,7 @@ public class ConfiguracoesSeguranca {
         public SecurityFilterChain filtrosSeguranca(HttpSecurity http) throws Exception {
                 return http
                                 .authorizeHttpRequests(req -> {
-                                        req.requestMatchers("/login", "/atualizar-token", "/registrar",
+                                        req.requestMatchers("/login/**", "/atualizar-token", "/registrar",
                                                         "/verificar-conta").permitAll();
                                         req.requestMatchers(HttpMethod.GET, "/cursos").permitAll();
                                         req.requestMatchers(HttpMethod.GET, "/topicos/**").permitAll();
