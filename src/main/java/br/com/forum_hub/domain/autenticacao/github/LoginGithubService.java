@@ -10,8 +10,8 @@ import org.springframework.web.client.RestClient;
 @Service
 public class LoginGithubService {
 
-	private final String clientId = "Ov23li59jkf0hc2pVhbH";
-	private final String clientSecret = "e1f80b8d7feab77b81037d25e1785d610265da6f";
+	private final String clientId = "xxxx";
+	private final String clientSecret = "xxxx";
 	private final String redirectUri = "http://localhost:8080/login/github/autorizado";
 	private final RestClient restClient;
 
