@@ -32,9 +32,9 @@ public class LoginGithubController {
 	}
 	
 	@GetMapping("/autorizado")
-	public ResponseEntity<?> obterToker(@RequestParam String code){
+	public ResponseEntity<?> autenticarUsuarioOAuth(@RequestParam String code){
 		
-		var token = loginGithubService.obterToken(code);
+		var token = loginGithubService.obterEmail(code);
 		return ResponseEntity.ok(token);
 	}
 }
