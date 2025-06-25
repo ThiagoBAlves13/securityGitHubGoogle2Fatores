@@ -2,6 +2,7 @@ package br.com.forum_hub.domain.autenticacao.github;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,10 @@ import org.springframework.web.client.RestClient;
 @Service
 public class LoginGithubService {
 
-	private final String clientId = "xxxx";
-	private final String clientSecret = "xxxx";
+	@Value("${github.oauth.client.id}")
+	private String clientId;
+	@Value("${github.oauth.client.secret}")
+	private String clientSecret;
 	private final String redirectUri = "http://localhost:8080/login/github/autorizado";
 	private final RestClient restClient;
 
