@@ -68,7 +68,7 @@ public class TokenService {
 
         String tokenAcesso = this.gerarToken(usuario);
         String refreshToken = this.gerarRefreshToken(usuario);
-        return new DadosToken(tokenAcesso, refreshToken);
+        return new DadosToken(tokenAcesso, refreshToken, false);
     }
 
 }
