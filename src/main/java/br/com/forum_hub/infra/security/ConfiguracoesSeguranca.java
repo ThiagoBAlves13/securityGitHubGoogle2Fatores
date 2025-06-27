@@ -29,7 +29,7 @@ public class ConfiguracoesSeguranca {
                 return http
                                 .authorizeHttpRequests(req -> {
                                         req.requestMatchers("/login/**", "/atualizar-token", "/registrar",
-                                                        "/verificar-conta").permitAll();
+                                                        "/verificar-conta", "verificar-a2f").permitAll();
                                         req.requestMatchers(HttpMethod.GET, "/cursos").permitAll();
                                         req.requestMatchers(HttpMethod.GET, "/topicos/**").permitAll();
                                         req.requestMatchers(HttpMethod.POST, "/topicos").hasRole("ESTUDANTE");

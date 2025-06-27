@@ -10,7 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.forum_hub.domain.perfil.Perfil;
-import br.com.forum_hub.domain.perfil.PerfilNome;
 import br.com.forum_hub.infra.exception.RegraDeNegocioException;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,7 +43,7 @@ public class Usuario implements UserDetails {
     private LocalDateTime expiracaoToken;
     private Boolean ativo;
     private String secret;
-    private Boolean a2f_ativa;
+    private Boolean a2fAtiva;
     
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -120,6 +119,14 @@ public class Usuario implements UserDetails {
 
 	public void gerarSecret(String secret) {
 		this.setSecret(secret);
+	}
+
+	public boolean isA2fAtiva() {
+		return this.a2fAtiva;
+	}
+
+	public void ativarA2f() {
+		this.a2fAtiva = true;
 	}
 
 }
