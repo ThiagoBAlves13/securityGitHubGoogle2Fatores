@@ -43,6 +43,9 @@ public class Usuario implements UserDetails {
     private String token;
     private LocalDateTime expiracaoToken;
     private Boolean ativo;
+    private String secret;
+    private Boolean a2f_ativa;
+    
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuarios_perfis", 
@@ -114,5 +117,9 @@ public class Usuario implements UserDetails {
     public void reativar() {
         this.ativo = true;
     }
+
+	public void gerarSecret(String secret) {
+		this.setSecret(secret);
+	}
 
 }
