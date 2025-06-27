@@ -15,6 +15,7 @@ import br.com.forum_hub.domain.perfil.PerfilNome;
 import br.com.forum_hub.domain.perfil.PerfilService;
 import br.com.forum_hub.infra.email.EmailService;
 import br.com.forum_hub.infra.exception.RegraDeNegocioException;
+import br.com.forum_hub.infra.security.totp.TotpService;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -36,6 +37,9 @@ public class UsuarioService implements UserDetailsService {
     @Autowired
     @Lazy
     HierarquiaService hierarquiaService;
+    
+    @Autowired
+    TotpService totpService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -114,4 +118,15 @@ public class UsuarioService implements UserDetailsService {
         Usuario usuario = this.buscarUsuarioPorId(id);
         usuario.reativar();
     }
+
+    @Transactional
+	public String gerarQrCode(Usuario logado) {
+		
+		var secret = totpService.gerarSecret();
+		
+		logado.gerarSecret(secret);
+		usuarioRepository.save(logado);
+		
+		return totpService.gerarQrCode(logado);
+	}
 }
